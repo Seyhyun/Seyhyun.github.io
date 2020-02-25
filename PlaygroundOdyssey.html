@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Playground Odyssey</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" href="images/Self/game_icon.png">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">SEYHYUN YANG</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">HOME</a></li>
+						<li><a href="Projects.html" class="active">PROJECTS</a></li>
+						<li><a href="DevBlog.html">DEV BLOGS</a></li>
+						<li><a href="AboutMe.html" >ABOUT ME</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper style1 fullscreen fade-up"">
+						<div class="inner">
+							<h1 class="major">PLAYGROUND ODYSSEY</h1>
+							<span class="image fit"><a href="https://globalgamejam.org/2019/games/playground-odyssey" class="image">
+								<img src="images/Dreamwillow/Dreamwillow.png" alt="" /></span></a>
+							<h2>ABOUT</h2>
+							<p>A long term project completed over the course of a semester by around 30 University of Michigan students, Dreamwillow is a
+								lighthearted faux top down twin stick shooter about a necromancer ressurecting their 
+								foes to help them escape a dark forest.</p>
+							<h2>DEVELOPMENT INFO</h2>
+							<ul>
+								<li>
+									Developed by WolverineSoft Studio
+								</li>
+								<li>
+									3 month development cycle (09/08/2019 - 12/08/2019)
+								</li>
+								<li>
+									30 developers
+								</li>
+								<li>
+									Made using Unity Engine
+								</li>
+							</ul>
+							<h2>CONTRIBUTIONS</h2>
+							<ul>
+								<li>
+									Programmer
+								</li>
+						</div>
+					</section>
+					<section id="main" class="wrapper style2 fullscreen fade-up"">
+						<div class="inner">
+							<h1 class="major">POST-MORTEM</h1>
+							<img src="images/Dreamwillow/dreamwillow_1.gif" class="image right" style="max-width:60%; 
+							max-height:100%; margin: 0em 1em 0em 1em;">
+							<h2>WHAT WENT RIGHT</h2>
+							<ul>
+								<li>
+									Programming based on UnityEvents allowed for abstract interfaces between code, audio and animation
+								</li>
+								<li>
+									Pod system allowed consistent communication between different departements working on the same task
+								</li>
+								<li>
+									Usage of Jira Project Management Software allowed for transparency of who was working on what and how the team was doing as a whole
+								</li>
+							</ul>
+							<br><br><br>
+							<img src="images/Dreamwillow/dreamwillow_2.gif" class="image left" style="max-width:60%; 
+							max-height:100%; margin: 0em 3em 1em 1em;">
+							<h2>WHAT COULD BE IMPROVED</h2>
+							<ul>
+								<li>
+									The lack of clear documentation guidelines and requirements led to decentralized and outdated documentation
+									as the game grew - programmers had major parts of their tasks changed mid-sprint
+								</li>
+								<li>
+									Workflow continously changed during sprint, requiring members to learn new skills during sprints
+								</li>
+								<li>
+									Severe lack of code reviews led to buggy code making it into production
+								</li>
+								<li>
+									Very little time was spent on preproduction, resulting in many mechanics not being fully desgined before 
+									programmers were tasked with implementing them
+								</li>
+							</ul>
+							<br><br><br>
+							<img src="images/Dreamwillow/dreamwillow_3.gif" class="image right" style="max-width:60%; 
+							max-height:100%; margin: 0em 1em 0em 1em;">
+							<h2>LESSONS LEARNED</h2>
+							<ul>
+								<li>
+									Far more time needs to be spent in pre-production, to hammer down mechanics so programmers can easily implement them without worrying about changes
+								</li>
+								<li>
+									Use some form of structured documentation software, such as Confluence
+								</li>
+								<li>
+									Clearly and quickly communicate any pivots or changes in design to programmers
+								</li>
+						</div>
+					</section>
+					<section id="main" class="wrapper style3 fullscreen fade-up"">
+						<div class="inner">
+							<h1 class="major">CONTRIBUTIONS</h1>
+							<p>
+								My major contribution to this project was the implementation of the shop. Due to not enough time spent in 
+								pre-preproduction, the shop design was revamped multiple times throughout development, sometimes even during 
+								sprints. It was my job to initially implement the shop, take care of these problems and reimplement features 
+								when neccessary. Initially, the player was supposed to be able to buy upgrades to their main attack in addition
+								to health and extra necromancy slots. The proposal was that players would be able to pick up an attack upgrade, 
+								test it out, but if they try to leave the shop without paying, the door would close and stop them from leaving.
+								This was implemented within a few weeks, and the player was able to test out the new attacks. However, to the end
+								of that sprint, it was decided that the player would not be able to upgrade their attack. So, that option was 
+								removed, but right after the sprint, it was again decided that you would not be able to pickup items, and you 
+								would simply buy items on the spot without having to pay by going up to the shopkeeper. At this point, I should
+								have simply rewritten the entire shop system from scratch, as many of the features had been removed, and the 
+								complicated eventsystem that was in place was entirely uneccessary. However, I decided to just use what I had 
+								already created. This made it difficult to further update the shop whenever anything was added, because I had 
+								to go through the system that I had implemented, instead of having a simple trigger based system. However, I did 
+								end up finishing the shop, and it currently perfectly functional within the game.<br>
+								During production, I learned a very important lesson, and it is that not all my work will always make into the 
+								game, so I should cut my losses as soon as possible to avoid uneccessary work.
+							</p>
+						</div>
+					</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Seyhyun Yang. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
