@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>SUNSET ISLAND</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">SEYHYUN YANG</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">HOME</a></li>
+						<li><a href="Projects.html" class="active">PROJECTS</a></li>
+						<li><a href="DevBlog.html">DEV BLOGS</a></li>
+						<li><a href="AboutMe.html" >ABOUT ME</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper style1 fullscreen fade-up"">
+						<div class="inner">
+							<h1 class="major">SUNSET ISLAND</h1>
+							<span class="image fit"><a href="https://robswor.itch.io/sunset-island" class="image">
+								<img src="images/Sunset Island/sunset_island.png" alt="" /></span></a>
+							<h2>ABOUT</h2>
+							<p>
+								A first person survival horror game made for the 2018 WolverineSoft Pumpkin Game Jam. 
+								The main goal of the game is to survive as long as possible. You can collect resources 
+								such as rocks, stones, and herbs with your axe, and trade them to the villagers in order 
+								to get necessary resources and services such as lantern oil, healing, and axe sharpening. 
+								However, the twist is, when night falls, monsters begin to appear. You can kill them with 
+								your axe and survive the night, however, the next morning you find out that the humanoid 
+								monsters that you had been killing were the villagers all along! So, you have to strike 
+								a precarious balance between killing the monsters and sparing the villagers to survive for 
+								as long as possible.
+							</p>
+							<h2>DEVELOPMENT INFO</h2>
+							<ul>
+								<li>
+									Developed by Seyhyun Yang, Rob Swor, Austin Riopelle, Jacob Smellie, Joshua 
+									Rickard-Lukasavitz, and Kiva Nguyen
+								</li>
+								<li>
+									48 hour development cycle (October 2018)
+								</li>
+								<li>
+									Made using Unity Engine
+								</li>
+							</ul>
+							<h2>CONTRIBUTIONS</h2>
+							<ul>
+								<li>
+									Programmer
+								</li>
+						</div>
+					</section>
+					<section id="main" class="wrapper style2 fullscreen fade-up"">
+						<div class="inner">
+							<h1 class="major">POST-MORTEM</h1>
+							<img src="images/Sunset Island/sunset_island_1.gif" class="image right" style="max-width:60%; 
+							max-height:100%; margin: 0em 1em 0em 1em;">
+							<h2>WHAT WENT RIGHT</h2>
+							<ul>
+								<li>
+									The (at the time) new Unity Terrain System was used to great effect to create high quality 3d terrain for the island
+								</li>
+								<li>
+									The Unity FPSController asset was used to great effect as the basis of the player controller for the game
+								</li>
+								<li>
+									Navmesh was used to provide rudimentary but effective pathfinding for the villagers and monsters
+								</li>
+							</ul>
+							<br><br><br><br><br><br><br><br><br>
+							<img src="images/Sunset Island/sunset_island_2.gif" class="image left" style="max-width:60%; 
+							max-height:100%; margin: 0em 3em 1em 1em;">
+							<h2>WHAT COULD BE IMPROVED</h2>
+							<ul>
+								<li>
+									Git was used for version control at the beginning of development, however, several merge conflicts later, we were 
+									somehow denied access from the repo that we had created, even the creator. We were forced to change to Unity Collab
+								</li>
+								<li>
+									This was the first time I was using Unity, so I was not able to contribute as much to the core game as I would have liked to
+								</li>
+								<li>
+									Not having enough artists resulted in programmers having to create animations via Coroutines and Translations
+								</li>
+								<li>
+									The game was highly overscoped, resulting in almost half of the features and mechanics being cut during the development process
+								</li>
+							</ul>
+							<br><br><br>
+							<img src="images/Sunset Island/sunset_island_3.gif" class="image right" style="max-width:60%; 
+							max-height:100%; margin: 0em 1em 0em 1em;">
+							<h2>LESSONS LEARNED</h2>
+							<ul>
+								<li>
+									Properly configure git repositories for use with Unity before starting projects
+								</li>
+								<li>
+									Clearly assign work and make sure there are enough artists and sound designers in the team to match the scope of the game
+								</li>
+								<li>
+									As this was my first time using Unity, I learned quite a lot about the basics of Unity, and I had a moderate understanding of how 
+									to code and make games in Unity by the end of the Game Jam
+								</li>
+						</div>
+					</section>
+					<section id="main" class="wrapper style3 fullscreen fade-up"">
+						<div class="inner">
+							<h1 class="major">CONTRIBUTIONS</h1>
+							<p>
+								My major contribution to this project was the implementation of the UI and menu system. When I was implementing the menu 
+								system, one major issue that came up was the player input while the game was paused. Since the orientation of the player 
+								controller, which was controlled by the mouse, was not implemented using physics, it would run indepentantly of TimeScale, 
+								which is how the pause menu was implemented. Several other things in the game, such as the text boxes for the villagers, 
+								were also like this, and would move and change indepentantly even when the game was paused and the TimeScale was set to 0. 
+								What I ended up doing to fix this was decoupling the cursor from the player controller when pause mode was entered. Also, 
+								I added code to things such as the villager text boxes that insured that the code that changes the transform in relation to 
+								the player would only run when the game was not in pause mode.
+							</p>
+						</div>
+					</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Seyhyun Yang. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

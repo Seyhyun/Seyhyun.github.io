@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>LATE TO AREA 51</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">SEYHYUN YANG</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">HOME</a></li>
+						<li><a href="Projects.html" class="active">PROJECTS</a></li>
+						<li><a href="DevBlog.html">DEV BLOGS</a></li>
+						<li><a href="AboutMe.html" >ABOUT ME</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper style1 fullscreen fade-up"">
+						<div class="inner">
+							<h1 class="major">LATE TO AREA 51</h1>
+							<span class="image fit"><a href="https://seyhyun.itch.io/late-to-area-51" class="image">
+								<img src="images/Sunset Island/sunset_island.png" alt="" /></span></a>
+							<h2>ABOUT</h2>
+							<p>
+								A 2D platformer about a gamer who arrived a day late to the Area 51 Raid, created for the 
+								2019 WolverineSoft Pumpkin Game Jam. You infiltrate the facility, and rescue the aliens and 
+								use their powers to escape. Each alien gives you a unique platforming ability when you rescue 
+								them.
+							</p>
+							<h2>DEVELOPMENT INFO</h2>
+							<ul>
+								<li>
+									Developed by Seyhyun Yang, Michael Tilbury, Nathan Gualtieri, Blake 
+									Webb, and Dilan Huang
+								</li>
+								<li>
+									48 hour development cycle (October 2019)
+								</li>
+								<li>
+									Made using Unity Engine
+								</li>
+							</ul>
+							<h2>CONTRIBUTIONS</h2>
+							<ul>
+								<li>
+									Programmer
+								</li>
+								<li>
+									Designer
+								</li>
+						</div>
+					</section>
+					<section id="main" class="wrapper style2 fullscreen fade-up"">
+						<div class="inner">
+							<h1 class="major">POST-MORTEM</h1>
+							<img src="images/Sunset Island/sunset_island_1.gif" class="image right" style="max-width:60%; 
+							max-height:100%; margin: 0em 1em 0em 1em;">
+							<h2>WHAT WENT RIGHT</h2>
+							<ul>
+								<li>
+									We used Tilemaps to design and implement the level design in an efficient and quick manner, compared to manually building the level.
+								</li>
+								<li>
+									Tasks were assigned and completed efficiently, and we were able to finish the game without staying up the entire 48 hours of the Jam.
+								</li>
+								<li>
+									Mechananics were quickly determined during the early phase of production, with only minor changes going forward, so programmers were able 
+									to work efficiently
+								</li>
+							</ul>
+							<br><br><br><br><br><br><br><br><br>
+							<img src="images/Sunset Island/sunset_island_2.gif" class="image left" style="max-width:60%; 
+							max-height:100%; margin: 0em 3em 1em 1em;">
+							<h2>WHAT COULD BE IMPROVED</h2>
+							<ul>
+								<li>
+									Death and respawn mechanics were implemented very inefficiently, with each hazard or enemy holding a reference to a specific respawn point
+								</li>
+								<li>
+									Collision detection was slightly buggy, resulting in jump counts not resetting, or ability cooldowns resetting prematurely because of 
+									events triggered by collisions that shouldn't have been detected
+								</li>
+								<li>
+									The tilemap colliders were not implemented properly, and in the final game there are several spots where you can get stuck between the 
+									colliders of the walls and softlock yourself
+								</li>
+							</ul>
+							<br><br><br>
+							<img src="images/Sunset Island/sunset_island_3.gif" class="image right" style="max-width:60%; 
+							max-height:100%; margin: 0em 1em 0em 1em;">
+							<h2>LESSONS LEARNED</h2>
+							<ul>
+								<li>
+									Properly plan out implementation of mechanics before starting to work on them, to allow more efficient code and structures
+								</li>
+								<li>
+									Clearly assign work and make sure there are enough artists and sound designers in the team to match the scope of the game
+								</li>
+								<li>
+									As this was my first time using Unity, I learned quite a lot about the basics of Unity, and I had a moderate understanding of how 
+									to code and make games in Unity by the end of the Game Jam.
+								</li>
+						</div>
+					</section>
+					<section id="main" class="wrapper style3 fullscreen fade-up"">
+						<div class="inner">
+							<h1 class="major">CONTRIBUTIONS</h1>
+							<p>
+								My major contribution to this project was the implementation of the UI and menu system. When I was implementing the menu 
+								system, one major issue that came up was the player input while the game was paused. Since the orientation of the player 
+								controller, which was controlled by the mouse, was not implemented using physics, it would run indepentantly of TimeScale, 
+								which is how the pause menu was implemented. Several other things in the game, such as the text boxes for the villagers, 
+								were also like this, and would move and change indepentantly even when the game was paused and the TimeScale was set to 0. 
+								What I ended up doing to fix this was decoupling the cursor from the player controller when pause mode was entered. Also, 
+								I added code to things such as the villager text boxes that insured that the code that changes the transform in relation to 
+								the player would only run when the game was not in pause mode.
+							</p>
+						</div>
+					</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Seyhyun Yang. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Project Blue Dev Blog 1</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">SEYHYUN YANG</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">HOME</a></li>
+						<li><a href="Projects.html">PROJECTS</a></li>
+						<li><a href="DevBlog.html" class="active">DEV BLOGS</a></li>
+						<li><a href="AboutMe.html">ABOUT ME</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+				<section id="two" class="wrapper style3 fade-up">
+					<div class="inner">
+						<h1>Project Blue Dev Blog 1</h1>
+						<h2>February 2nd, 2020 ~ February 16th, 2020</h2>
+						<p>
+							Fixing Git LFS problems and developing editor tools for creation of boss attacks.
+						</p>
+					</div>
+					<div class="inner">
+						<h3>Git LFS Problems</h3>
+						<p>
+							For this sprint I was going to build a scriptable object for the boss attack that would be used 
+							for Project Blue and possibly future games, but unfortunately, I ran into a rather interesting git error. 
+							A plugin we had decided to use, DOTween, began returning compiler errors. Unity was unable to read a single 
+							.dll file, which caused 177 cascading errors. After much effort, it was discovered that .dll files were tracked 
+							by Git LFS, and for some reason, they were still stored as text pointers. How Git LFS works, is that it tracks 
+							certain types of large files, and it stores them as text pointers, and only redownloads them when they are changed 
+							to safe space and time. Normally, when you clone a repo, any files tracked by Git LFS are downloaded as text 
+							files that contain the text pointer and version info. Git LFS then goes through those files and downloads them 
+							from the repository, replacing the text files. What we realized was that for some reason, Git LFS was failing 
+							to download the files and leaving them as text pointers. We found several methods of fixing this. The easiest 
+							one was deleting the local copy of the repo, recloning the repo, and reinitializing Git LFS. Doing this multiple 
+							times eventually results in the bug being fixed. A more difficult, albeit far faster method of fixing this is 
+							finding the specific files that had been affected, deleting them, and using git checkout to redownload them. 
+							This fixed all the errors, and I was able to instruct other students on the team who had similar errors pop up 
+							on their computers.
+						</p>
+						<br><br><br>
+						<h3>Template Boss Attack ScriptableObject</h3>
+						<p>
+							After all the problems with Git LFS were mostly resolved, I began work on the Template Boss Attack Scriptable Object. 
+							The main components that were needed were a List of objects to be spawned during the attack, and the position and 
+							rotation of each of those objects. Also, a bool to control the boss's superarmor state, and another bool that would 
+							conditionally show a float field for idle time after the attack. I first had to learn how to use ScriptableObjects 
+							in Unity. A ScriptableObject is a data container that you can use to save large amounts of data, independent of class 
+							instances. What we wanted to do is have a template ScriptableObject that we could make any type of attack instance 
+							based off it, which could be used for all boss fights in Project Blue, and possibly for future projects as well. 
+							Making the ScriptableObject and creating the variables to store the data, and necessary functions did not take very 
+							long, as it was very similar to just making a script based off MonoBehaviour. The part that was truly difficult and 
+							time consuming was making this user-friendly enough that non-programmers would be able to use it from the inspector 
+							without touching the code. I quickly realized that the most optimal way to do this would be to write a custom editor 
+							script, which I had to teach myself how to do. After familiarizing myself with the functions and syntax of the Unity 
+							CustomEditor class and EditorGUILayout class, the first thing I implemented was the toggleable idleTime field. I 
+							used EditorGUILayout.Toggle to create a toggle button linked to a bool, which when set to true, would create a new 
+							Editor element, in this case a EditorGUILayout.FloatField, for the time the boss would idle after the attack. The 
+							next big hurdle was creating a field that you could drag attack projectile prefab into, and automatically add those 
+							to a list of projectiles that you could select from the inspector. What I ended up doing is having a 
+							EditorGUILayout.ObjectField, that, when a prefab is dragged into it, would set the private GameObject projectile 
+							to be a copy of it, and then set the target of the ObjectField to null, emptying the field. So, when a prefab is 
+							dragged in, it disappears so more can be dragged in afterward. The difficult part was adding any new projectile 
+							prefabs to a dropdown list that could be selected from. After many, many different attempts using various methods, 
+							I ended up using a very roundabout way. I had a List&ltGameObject&gt called projectiles and a List&ltstring&gt called names, 
+							and a 2 int variables that were used to check if any prefabs had been added by checking the size of the lists. When 
+							a prefab is dragged into the ObjectField, it is automatically added to the end of the projectiles List. projectiles.Count 
+							would increase, which would trigger another function, which deleted the names List, and rebuilt it, going through a 
+							loop projectiles.Count times, adding in new strings that were equal to the name of each GameObject in projectiles, 
+							so the indexes would line up. Then, a dropdown list will automatically build itself from the names List, with the 
+							output index being remapped to projectiles, which would be set to the currentProjectile, which is the type of projectile 
+							chosen in the Inspector.
+							<br><br>
+							The next big task was making writable fields for the coordinates and rotation of each projectile to be spawned, the 
+							number of projectiles being decide in the Inspector by an IntField. What I ended up doing is making a class that held 
+							the x and y coordinates and rotation of a projectile, alongside a custom constructor. There is a list of these structs, 
+							and whenever the number of projectiles is changed, the Editor is rebuilt to list Slider fields for coordinates and 
+							rotation of each projectile, with numbered labels. Since the data is stored in a List of Classes, the data is preserved 
+							even if several are deleted.
+							<br><br>
+​							 Afterward, I had to write the public Attack() function, which would instantiate projectile prefabs at the according 
+							locations, and idle if applicable. However, I discovered that scripts derived from ScriptableObject were unable to 
+							use Coroutines, so the idling itself had to be passed off to the State Machine, which would be controlling the boss itself.
+						</p>
+					</div>
+					<div class="inner">
+						<h3>Limitations and Future Tasks</h3>
+						<p>
+							Some things I have to continue working include are adding in a method to remove prefabs from the projectiles list. Currently 
+							there is no way to do so, and the only method is to delete the specific ScriptableObject and recreate it. Also, I intend 
+							on using DrawGizmo to allow students from the design team to drag the projectiles around the sceneand rotate them, so they 
+							do not have to manually adjust the coordinates. Also, I intend on modifying the ScriptableObject to allow manual selection 
+							of type of projectile prefab for each projectile that is instantiated.
+						</p>
+					</div>
+					<div class="inner">
+						<h3>WolverineSoft Labs</h3>
+						<p>
+							For the WolverineSoft Labs, we formed project teams and each team made a specific game idea to focus on for the semester. 
+							The current game teams are untitled-bug-game, ascension, and awoken. Team untitled-bug-game decided to make a 2-way tower 
+							defense game similar to Autochess. Team ascension decided to make a game similar to Nidhogg, except the gameplay takes 
+							place on a vertical axis instead of a horizontal one. Team awoken decided to make a top-down pvp tank fighting game. The 
+							teams have started work on the MVPs, and the less experienced members have been working on basic Unity tutorials so they 
+							can begin to contribute.
+						</p>
+					</div>
+				</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Seyhyun Yang. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
