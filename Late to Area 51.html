@@ -110,11 +110,7 @@
 									Properly plan out implementation of mechanics before starting to work on them, to allow more efficient code and structures
 								</li>
 								<li>
-									Clearly assign work and make sure there are enough artists and sound designers in the team to match the scope of the game
-								</li>
-								<li>
-									As this was my first time using Unity, I learned quite a lot about the basics of Unity, and I had a moderate understanding of how 
-									to code and make games in Unity by the end of the Game Jam.
+									Properly unify collision detection as OnCollision or OnTrigger to avoid confusion and buggy code.
 								</li>
 						</div>
 					</section>
@@ -122,14 +118,14 @@
 						<div class="inner">
 							<h1 class="major">CONTRIBUTIONS</h1>
 							<p>
-								My major contribution to this project was the implementation of the UI and menu system. When I was implementing the menu 
-								system, one major issue that came up was the player input while the game was paused. Since the orientation of the player 
-								controller, which was controlled by the mouse, was not implemented using physics, it would run indepentantly of TimeScale, 
-								which is how the pause menu was implemented. Several other things in the game, such as the text boxes for the villagers, 
-								were also like this, and would move and change indepentantly even when the game was paused and the TimeScale was set to 0. 
-								What I ended up doing to fix this was decoupling the cursor from the player controller when pause mode was entered. Also, 
-								I added code to things such as the villager text boxes that insured that the code that changes the transform in relation to 
-								the player would only run when the game was not in pause mode.
+								My major contribution to this project was the design of the player's special abilities, implementation of the player controller, 
+								and the design of the final level. The first ability the player gets is the hover, which was implemented by restraining the 
+								player's y-position while the button is pressed. The second ability is the teleport. This was implemented by having a separate 
+								GameObject that is on a different layer to avoid collision. So, the player could send the GameObject through thin barriers, and 
+								teleport to its location on the other side. The final ability was the super jump, which was simply implemented as a jump with 
+								more force behind it. The final level was designed to be very difficult, requiring the player to use all the abilities in tandem, 
+								sometimes even having to cancel one ability with another. As a result, it was extremely challenging, but several players were able 
+								to beat it after practicing.
 							</p>
 						</div>
 					</section>
