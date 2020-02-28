@@ -77,33 +77,22 @@
 							<h2>WHAT WENT RIGHT</h2>
 							<ul>
 								<li>
-									Programming based on UnityEvents allowed for abstract interfaces between code, audio and animation
+									Implementing each of the individual mechanics in seperate scenes allowed for concurrent and efficient work without causing merge conflicts
 								</li>
 								<li>
-									Pod system allowed consistent communication between different departements working on the same task
-								</li>
-								<li>
-									Usage of Jira Project Management Software allowed for transparency of who was working on what and how the team was doing as a whole
+									Animation using the Unity Animator allowed for animations to be quickly implemented after the sprites were created
 								</li>
 							</ul>
-							<br><br><br>
+							<br><br><br><br><br>
 							<img src="images/PlaygroundOdyssey/playground_odyssey_2.gif" class="image left" style="max-width:60%; 
 							max-height:100%; margin: 0em 3em 1em 1em;">
 							<h2>WHAT COULD BE IMPROVED</h2>
 							<ul>
 								<li>
-									The lack of clear documentation guidelines and requirements led to decentralized and outdated documentation
-									as the game grew - programmers had major parts of their tasks changed mid-sprint
+									Layers were not properly ordered in the creation of the map, resulting in many elements clipping behind and in front of each other
 								</li>
 								<li>
-									Workflow continously changed during sprint, requiring members to learn new skills during sprints
-								</li>
-								<li>
-									Severe lack of code reviews led to buggy code making it into production
-								</li>
-								<li>
-									Very little time was spent on preproduction, resulting in many mechanics not being fully desgined before 
-									programmers were tasked with implementing them
+									Lack of experience in using the Unity Animator resulted in many small bugs and glitches in the animations that took a long time to fix
 								</li>
 							</ul>
 							<br><br><br>
@@ -112,13 +101,10 @@
 							<h2>LESSONS LEARNED</h2>
 							<ul>
 								<li>
-									Far more time needs to be spent in pre-production, to hammer down mechanics so programmers can easily implement them without worrying about changes
+									When using Layers and Tags in a team, the collisions, render order of Layers, and usage of tags need to be decided on before each programmer individually uses them
 								</li>
 								<li>
-									Use some form of structured documentation software, such as Confluence
-								</li>
-								<li>
-									Clearly and quickly communicate any pivots or changes in design to programmers
+									For small scale projects such as this, vector art and keyframe based animation is far easier and quicker than individually drawing each from and using the Unity Animator to animate them
 								</li>
 						</div>
 					</section>
@@ -126,23 +112,13 @@
 						<div class="inner">
 							<h1 class="major">CONTRIBUTIONS</h1>
 							<p>
-								My major contribution to this project was the implementation of the shop. Due to not enough time spent in 
-								pre-preproduction, the shop design was revamped multiple times throughout development, sometimes even during 
-								sprints. It was my job to initially implement the shop, take care of these problems and reimplement features 
-								when neccessary. Initially, the player was supposed to be able to buy upgrades to their main attack in addition
-								to health and extra necromancy slots. The proposal was that players would be able to pick up an attack upgrade, 
-								test it out, but if they try to leave the shop without paying, the door would close and stop them from leaving.
-								This was implemented within a few weeks, and the player was able to test out the new attacks. However, to the end
-								of that sprint, it was decided that the player would not be able to upgrade their attack. So, that option was 
-								removed, but right after the sprint, it was again decided that you would not be able to pickup items, and you 
-								would simply buy items on the spot without having to pay by going up to the shopkeeper. At this point, I should
-								have simply rewritten the entire shop system from scratch, as many of the features had been removed, and the 
-								complicated eventsystem that was in place was entirely uneccessary. However, I decided to just use what I had 
-								already created. This made it difficult to further update the shop whenever anything was added, because I had 
-								to go through the system that I had implemented, instead of having a simple trigger based system. However, I did 
-								end up finishing the shop, and it currently perfectly functional within the game.<br>
-								During production, I learned a very important lesson, and it is that not all my work will always make into the 
-								game, so I should cut my losses as soon as possible to avoid uneccessary work.
+								My major contribution to this project was the implementation and design of each of the playground mechanics. The monkey bars, ladder, and climable walls were all 
+								fairly easy to implement, with the player's x or y-position being locked while they are being used. The swings were a bit more difficult to implement. 
+								Many different methods were tried, such as manually calculating the relative transform of the player in a unit circle around the swing, or temporarily 
+								setting the player as a child of the swing. None of these worked particularly well, and what I ended up doing was using the FixedJoint2D component. This 
+								allowed me to fix the player to the end of the swing, and by setting the break force to infinity, the player could swing back and forth without breaking 
+								free. The component could simply be set to inactive when the player gets off of the swing. There were several other mechanics that I designed, such as a 
+								jungle gym, or a flight mechanic, there was not enough time to implement them.
 							</p>
 						</div>
 					</section>
