@@ -63,6 +63,9 @@
 								<li>
 									Programmer
 								</li>
+								<li>
+									Designer
+								</li>
 						</div>
 					</section>
 					<section id="main" class="wrapper style2 fullscreen fade-up"">
@@ -100,10 +103,11 @@
 							<h2>LESSONS LEARNED</h2>
 							<ul>
 								<li>
-									When using Layers and Tags in a team, the collisions, render order of Layers, and usage of tags need to be decided on before each programmer individually uses them
+									More time should be spent in pre-production to concretely decide on the design and mechanics of the game so pivots are not neccessary and the game can be finished 
+									within a reasonable time period
 								</li>
 								<li>
-									For small scale projects such as this, vector art and keyframe based animation is far easier and quicker than individually drawing each from and using the Unity Animator to animate them
+									Although polish and juice are very important, playtesting and fixing bugs should also be focused on to ensure a more complete game experience
 								</li>
 						</div>
 					</section>
@@ -111,13 +115,13 @@
 						<div class="inner">
 							<h1 class="major">CONTRIBUTIONS</h1>
 							<p>
-								My major contribution to this project was the implementation and design of each of the playground mechanics. The monkey bars, ladder, and climable walls were all 
-								fairly easy to implement, with the player's x or y-position being locked while they are being used. The swings were a bit more difficult to implement. 
-								Many different methods were tried, such as manually calculating the relative transform of the player in a unit circle around the swing, or temporarily 
-								setting the player as a child of the swing. None of these worked particularly well, and what I ended up doing was using the FixedJoint2D component. This 
-								allowed me to fix the player to the end of the swing, and by setting the break force to infinity, the player could swing back and forth without breaking 
-								free. The component could simply be set to inactive when the player gets off of the swing. There were several other mechanics that I designed, such as a 
-								jungle gym, or a flight mechanic, there was not enough time to implement them.
+								My major contribution to this project was the implementation of the menu system and the egg spawner, and the design of the game mechanics. As stated earlier, the original 
+								idea for the game was completely different, being a game a where you play as an egg, rolling down a hill and avoiding obstacles and trying not to crack yoursel open. 
+								Around 18 hours were spent on this, and then we decide to pivot to the current idea. The mechanics for the eggs spawing went through multiple iterations throughout the 
+								design process. Originally, they were supposed to simply spawn randomly, and then it was changed so that random nests would spawn with eggs in them, and then fixed nests 
+								with randomly spawing eggs, and the final iteration was fixed nests with eggs spawning after a set time passes after the egg is hatched and the chick is taken. These 
+								changes were mostly due to having not enough time to implement the mechanics, and the playing field of the game being decided to be small enough that random spawns were 
+								ineffective in making the game more fun to play.
 							</p>
 						</div>
 					</section>
