@@ -41,7 +41,7 @@
 						</p>
 					</div>
 					<div class="inner">
-						<img src="images/ProjectBlue/devblog1_1.PNG" class="image left" style="max-width:60%; 
+						<img src="images/ProjectBlue/devblog2_1.gif" class="image left" style="max-width:60%; 
 							max-height:100%; margin: 0em 3em 1em 1em;">
 						<h3>Boss Attack Editor and Extended ScriptableObject Functionality</h3>
 						<p>
@@ -67,6 +67,8 @@
 							the corresponding gizmo for each projectile in the editor scene, and the data of the position of each projectile would 
 							automatically change accordingly in the ScriptableObject that the Boss Attack Editor has a reference to.
 							<br>
+							<img src="images/ProjectBlue/devblog2_2.gif" class="image right" style="max-width:60%; 
+							max-height:100%; margin: 0em 3em 1em 1em;">
 							However, the difficult part was allowing the rotation to be rotated. I originally thought that simply attaching a 
 							rotationHandle would be enough. This was not the case. Since the gizmos only store their global rotation in the Matrix4x4, 
 							simply translating the Matrix4x4’s rotation component into a Vector3, modifying the values to those from the handle, 
@@ -93,6 +95,8 @@
 							ScriptableObject was reloaded. To fix this, I simply added in a line that changes the rotation read by the handle 
 							to the quotient of 360.
 							<br>
+							<img src="images/ProjectBlue/devblog2_3.gif" class="image left" style="max-width:60%; 
+							max-height:100%; margin: 0em 3em 1em 1em;">
 							The next thing I did was add the ability to remove prefabs from the projectile list, and set the type of projectile 
 							for each individual projectile that would be instantiated. For being able to remove prefabs, I removed the dropdown 
 							list for choosing the type of projectile that was there previously, and instead added in a folded section with individual 
