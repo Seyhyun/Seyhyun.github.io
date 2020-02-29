@@ -50,7 +50,7 @@
 							without having to delete and recreate the ScriptableObject, allowing the type of projectile being instantiated to be chosen 
 							for each instance, and allowing the position and rotation of each projectile to be changed by dragging around a gizmo in 
 							the scene instead of a slider bar in the editor. 
-							<br>
+							<br><br>
 							I started by attempting to call DrawGizmos inside the custom editor script inside the ScriptableObject. However, I quickly 
 							learned that  DrawGizmos, and anything derived from it can only be called within a class derived from Monobehavior, so it 
 							would not work within an asset derived from ScriptableObject. So, created an empty GameObject called Boss Attack Editor, 
@@ -66,7 +66,7 @@
 							Vector3 position back into a Matrix4x4 and change the gizmo’s transform to the new Matrix4x4. This allows you to drag around 
 							the corresponding gizmo for each projectile in the editor scene, and the data of the position of each projectile would 
 							automatically change accordingly in the ScriptableObject that the Boss Attack Editor has a reference to.
-							<br>
+							<br><br>
 							<img src="images/ProjectBlue/devblog2_2.gif" class="image right" style="max-width:60%; 
 							max-height:100%; margin: 0em 3em 1em 1em;">
 							However, the difficult part was allowing the rotation to be rotated. I originally thought that simply attaching a 
@@ -94,7 +94,7 @@
 							beyond 360 degrees, and this would cause float overflow, causing the value to be reset to zero whenever the 
 							ScriptableObject was reloaded. To fix this, I simply added in a line that changes the rotation read by the handle 
 							to the quotient of 360.
-							<br>
+							<br><br>
 							<img src="images/ProjectBlue/devblog2_3.gif" class="image left" style="max-width:60%; 
 							max-height:100%; margin: 0em 3em 1em 1em;">
 							The next thing I did was add the ability to remove prefabs from the projectile list, and set the type of projectile 
@@ -107,7 +107,7 @@
 							projectile was already using that type, it would cause a nullreferenceexception and cause the editor script to stop 
 							running. I ended up fixing this by resetting any projectiles that were using that type to index 0 before removing the 
 							prefab from the list.
-							<br>
+							<br><br>
 							After all of these were completed, I made the Boss Attack Editor into a prefab, so it could easily be used to create 
 							a boss attack. I then created a documentation page on the Studio’s Confluence, so designers could read through, and 
 							begin working on implementing boss attacks.
