@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Project Blue Dev Blog 2</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" href="images/Self/game_icon.png">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">SEYHYUN YANG</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">HOME</a></li>
+						<li><a href="Projects.html">PROJECTS</a></li>
+						<li><a href="DevBlog.html" class="active">DEV BLOGS</a></li>
+						<li><a href="AboutMe.html">ABOUT ME</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+				<section id="two" class="wrapper style3 fade-up">
+					<div class="inner">
+						<h1>Project Blue Dev Blog 2</h1>
+						<h2>February 17th, 2020 ~ March 1st, 2020</h2>
+						<p>
+							Further developing editor tools to allow direct modification of data through scene gizmos.
+						</p>
+					</div>
+					<div class="inner">
+						<img src="images/ProjectBlue/devblog1_1.PNG" class="image left" style="max-width:60%; 
+							max-height:100%; margin: 0em 3em 1em 1em;">
+						<h3>Boss Attack Editor and Extended ScriptableObject Functionality</h3>
+						<p>
+							After creating the basic functionality of the Boss Attack ScriptableObject in the previous sprint, my task this sprint was 
+							to add functionality such as allowing somebody to delete prefabs from the list of projectile prefabs through the editor, 
+							without having to delete and recreate the ScriptableObject, allowing the type of projectile being instantiated to be chosen 
+							for each instance, and allowing the position and rotation of each projectile to be changed by dragging around a gizmo in 
+							the scene instead of a slider bar in the editor. 
+							<br>
+							I started by attempting to call DrawGizmos inside the custom editor script inside the ScriptableObject. However, I quickly 
+							learned that  DrawGizmos, and anything derived from it can only be called within a class derived from Monobehavior, so it 
+							would not work within an asset derived from ScriptableObject. So, created an empty GameObject called Boss Attack Editor, 
+							and put a new Monobehavior script called ScriptableObjectDrawGizmo on it, and put in a public reference to a ScriptableObject. 
+							I first started by drawing a box gizmo at the position of each of the coordinates of the projectiles. This did not take 
+							too long, and was easily done. However, I had to find a way for the gizmos to be dragged around by the mouse, and have 
+							the projectile position data reflect that. After some research, I decided that using Handles would be the easiest way to 
+							this. However, I quickly came upon a very big problem. It turns out that gizmos only store their global transform 
+							information, and the transform data, position, rotation, scale, are all stored in the from a of single Matrix4x4 in 
+							quaternions. Fortunately, Unity has a built in function that can cast Matrix4x4s into Vector3s. Unfortunately, this took 
+							me quite a while to figure out. So, I would draw the gizmo, translate the gizmo’s transform into a Vector3, subtract the 
+							local offset from it, and draw a FreeMoveHandle at that point, and when the handle is moved, translate the handle’s new 
+							Vector3 position back into a Matrix4x4 and change the gizmo’s transform to the new Matrix4x4. This allows you to drag around 
+							the corresponding gizmo for each projectile in the editor scene, and the data of the position of each projectile would 
+							automatically change accordingly in the ScriptableObject that the Boss Attack Editor has a reference to.
+							<br>
+							However, the difficult part was allowing the rotation to be rotated. I originally thought that simply attaching a 
+							rotationHandle would be enough. This was not the case. Since the gizmos only store their global rotation in the Matrix4x4, 
+							simply translating the Matrix4x4’s rotation component into a Vector3, modifying the values to those from the handle, 
+							rebuilding a Matrix4x4 and changing the gizmo’s transform would result in the global rotation changing. So, the gizmo 
+							would be rotated not around its center, but global (0,0,0). Also, since the global rotation is being changed, if you 
+							tried to move the position after rotating it, the position would move with the new rotation being considered the 
+							global x and y axis, so it quickly becomes impossible to make any sense of the movement. After a bit more research, 
+							what I ended up doing is, every time any of the handles are used, drawing a new DrawRay gizmo on the new position. 
+							DrawRay can take 2 Vector3 inputs, one being the origin of the ray, and the other being the direction. So what I did 
+							was have a rotationHandle attached to the transform of the original box gizmo, but instead of the rotationHandle’s 
+							output data modifying the rotation of the box gizmo, it would draw a new DrawRay gizmo beginning at the position of 
+							the box gizmo, in the direction that the rotationHandle was turned, and the rotation would be turned into degrees and 
+							written back into the ScriptableObject, all without directly effecting the box gizmo’s Matrix4x4 transform. So, as a 
+							result, each projectile has a corresponding box gizmo in the scene, which can be dragged around to change the position, 
+							and each gizmo has a line coming out from its center, which can be rotated around the center of the gizmo to set the 
+							rotation that the projectile be instantiated at. However, as I was testing this out, I came upon a strange bug. When 
+							I rotated the handle in the scene, it would rotate and stay that way, but when I opened the ScriptableObject in the 
+							editor to see if the data had changed, the rotation of the gizmo would reset to 0. After well over 3 hours of debugging, 
+							I finally figured out the problem. When I had first created the BossAttackScriptableObject and its custom editor 
+							script, I had programmed in sliders for the position and rotation of each projectile, so that could be edited in 
+							the editor. However, EditorGUILayout.Slider also takes in parameters for the min and max values for the slider. I 
+							had set this for 0-360 degrees, thinking that would be enough. But, when the handles are rotated, you can go well 
+							beyond 360 degrees, and this would cause float overflow, causing the value to be reset to zero whenever the 
+							ScriptableObject was reloaded. To fix this, I simply added in a line that changes the rotation read by the handle 
+							to the quotient of 360.
+							<br>
+							The next thing I did was add the ability to remove prefabs from the projectile list, and set the type of projectile 
+							for each individual projectile that would be instantiated. For being able to remove prefabs, I removed the dropdown 
+							list for choosing the type of projectile that was there previously, and instead added in a folded section with individual 
+							toggles for each type of projectile in the list. If the toggle was clicked, the corresponding prefab would be removed 
+							from the list, and the rest of the editor would rebuild itself. I also added a dropdown list for choosing the type of 
+							projectile for each projectile in the foldout that housed the position and rotation data of each projectile. However, 
+							I found a error that would cause the entire editor to stop working. If I removed a projectile from the list, and a 
+							projectile was already using that type, it would cause a nullreferenceexception and cause the editor script to stop 
+							running. I ended up fixing this by resetting any projectiles that were using that type to index 0 before removing the 
+							prefab from the list.
+							<br>
+							After all of these were completed, I made the Boss Attack Editor into a prefab, so it could easily be used to create 
+							a boss attack. I then created a documentation page on the Studio’s Confluence, so designers could read through, and 
+							begin working on implementing boss attacks.
+						</p>
+					</div>
+					<div class="inner">
+						<h3>Limitations and Future Tasks</h3>
+						<p>
+							Some features that were suggest by my pod leader were having the Objectfield that new projectile prefabs are dragged 
+							into only accepting prefabs that include the projectile script that another pod member had created. Also, another 
+							feature that may be implemented in the future is instead of the box gizmo showing the position of the projectiles, 
+							the DrawMesh gizmo could be used to render the actual mesh that the prefab is using. However, if the prefab does not 
+							have a MeshRenderer component on it, this will cause a nullreferenceexception, causing the editor script to halt at 
+							that line.
+						</p>
+					</div>
+					<div class="inner">
+						<h3>WolverineSoft Labs</h3>
+						<p>
+							For the WolverineSoft Labs, we formed project teams and each team made a specific game idea to focus on for the semester. 
+							The current game teams are untitled-bug-game, ascension, and awoken. Team untitled-bug-game decided to make a 2-way tower 
+							defense game similar to Autochess. Team ascension decided to make a game similar to Nidhogg, except the gameplay takes 
+							place on a vertical axis instead of a horizontal one. Team awoken decided to make a top-down pvp tank fighting game. The 
+							teams have started work on the MVPs, and the less experienced members have been working on basic Unity tutorials so they 
+							can begin to contribute.
+						</p>
+					</div>
+				</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Seyhyun Yang. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
