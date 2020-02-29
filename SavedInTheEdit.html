@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Saved In The Edit</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" href="images/Self/game_icon.png">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">SEYHYUN YANG</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">HOME</a></li>
+						<li><a href="Projects.html" class="active">PROJECTS</a></li>
+						<li><a href="DevBlog.html">DEV BLOGS</a></li>
+						<li><a href="AboutMe.html" >ABOUT ME</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper style1 fullscreen fade-up"">
+						<div class="inner">
+							<h1 class="major">SAVED IN THE EDIT</h1>
+							<span class="image fit"><a href="https://mtilbury.itch.io/saved-in-the-edit" class="image">
+								<img src="images/SavedInTheEdit/savedintheedit.png" alt="" /></span></a>
+							<h2>ABOUT</h2>
+							<p>A 3D First Person Puzzle game where you have to rearrange film fragments to solve puzzles by changing the timeline 
+								of how things happen in each level, created for the 2020 Global Game Jam. Repair the timeline and get through the 
+								increasingly complicated levels.
+								
+							</p>
+							<h2>DEVELOPMENT INFO</h2>
+							<ul>
+								<li>
+									Developed by Seyhyun Yang, Jacob Smellie, Michael Tilbury, and Amber Renton
+								</li>
+								<li>
+									48 hour development cycle (February 2020)
+								</li>
+								<li>
+									3 developers
+								</li>
+								<li>
+									Made using Unity Engine
+								</li>
+							</ul>
+							<h2>CONTRIBUTIONS</h2>
+							<ul>
+								<li>
+									Programmer
+								</li>
+								<li>
+									Designer
+								</li>
+						</div>
+					</section>
+					<section id="main" class="wrapper style2 fullscreen fade-up"">
+						<div class="inner">
+							<h1 class="major">POST-MORTEM</h1>
+							<img src="images/FlockFighters/flockfighters_1.gif" class="image right" style="max-width:60%; 
+							max-height:100%; margin: 0em 1em 0em 1em;">
+							<h2>WHAT WENT RIGHT</h2>
+							<ul>
+								<li>
+									A significant amount of time was spent on pre-production, specifically on planning out the data structures used to implement the event timeline system, which allowed 
+									for quick and efficient work with no to little pivots or reduntant work
+								</li>
+								<li>
+									The event timeline data structures we developed allowed for level design to be done very easily, without having to create new prefabs and eventsystems for each level
+								</li>
+							</ul>
+							<br><br><br><br><br>
+							<img src="images/FlockFighters/flockfighters_2.gif" class="image left" style="max-width:60%; 
+							max-height:100%; margin: 0em 3em 1em 1em;">
+							<h2>WHAT COULD BE IMPROVED</h2>
+							<ul>
+								<li>
+									We did not have any artists on our team, so all the levels were made through the liberal use of Unity Primitives, and while this was later turned into a legitamate 
+									aesthetic choice, it would have been better if we had a 3D artist to model the levels and add textures
+								</li>
+								<li>
+									We had designed multiple unique mechanics, but due to time constraints we were only able to implement 3 of them, each in a unique level that combined it with the 
+									previous mechanics; if we had alloted time better and constructed a more robust eventsystem, it would have been possible to implement all of them
+								</li>
+							</ul>
+							<br><br><br>
+							<img src="images/FlockFighters/flockfighters_3.gif" class="image right" style="max-width:60%; 
+							max-height:100%; margin: 0em 1em 0em 1em;">
+							<h2>LESSONS LEARNED</h2>
+							<ul>
+								<li>
+									When coding and designing in Unity, if anything is going to be reused, or a similar method will be used in the future, creating prefabs and making the code modular so 
+									it can be used for other, similar, purposes can save large amounts of time and effort
+								</li>
+								<li>
+									Knowing the basics of Blender or another 3D modeling program can be invaluable for small projects like Game Jams, so you can make basic 3D models like wedges and cones 
+									without having to composite them with large numbers of Unity Primitives
+								</li>
+						</div>
+					</section>
+					<section id="main" class="wrapper style3 fullscreen fade-up"">
+						<div class="inner">
+							<h1 class="major">CONTRIBUTIONS</h1>
+							<p>
+								My major contribution to this project was the implementation of event timeline calculation for the eventsystem to use, and the design and implementation of the 3 levels. 
+								The timeline calculation was simply done by calculation and distance from the left side of the empty film reel to each 'event' file strip, and converting into a percentage, 
+								which would initiate the events at those corresponding percentages of the total time of each level. For the level design, we ended up hand-crafting each level out Unity 
+								Primitives, specifically cubes. The first level was designed to introduce the players to the basic concept of the timeline-arrangement gameplay and the button mechanic, and 
+								the power line mechanics. The second level introduced the concept of breakable walls, while expanding, and complicating the button mechanics. The third level introduces 
+								moving platforms, and further expanded the button mechanics, requiring the player to get the order and timing of each button press correct, while platforming on the moving 
+								platforms. While this was were the game stopped, several other levels and mechanics were designed. The next level would have introduced using buttons to control the movement 
+								of large objects, and transporting those objects using moving platforms. The final level would have been a very challenging level, using all the previously learned mechanics 
+								concurrently, and would have been a test of skill and memorization of the timeline. However, this was unable to make it into the game.
+							</p>
+						</div>
+					</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Seyhyun Yang. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
