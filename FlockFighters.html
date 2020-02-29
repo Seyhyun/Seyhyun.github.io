@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Flock Fighters</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" href="images/Self/game_icon.png">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">SEYHYUN YANG</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">HOME</a></li>
+						<li><a href="Projects.html" class="active">PROJECTS</a></li>
+						<li><a href="DevBlog.html">DEV BLOGS</a></li>
+						<li><a href="AboutMe.html" >ABOUT ME</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper style1 fullscreen fade-up"">
+						<div class="inner">
+							<h1 class="major">FLOCK FIGHTERS</h1>
+							<span class="image fit"><a href="https://wsoft.itch.io/flock-fighters" class="image">
+								<img src="images/FlockFighters/flockfighters.png" alt="" /></span></a>
+							<h2>ABOUT</h2>
+							<p>A 2D platforming adventure game made for the 2019 Global Game Jam, at the WolverineSoft host site. The game is meant to 
+								represent the beautiful relationship between recess and a child's imagination. To us, home meant reminiscing between 
+								on exploring the worlds we created with our childhood friend. Simply interact with each character in the game to explore 
+								their made-up story. Watch a humble little playground transform into completely different things!
+								
+							</p>
+							<h2>DEVELOPMENT INFO</h2>
+							<ul>
+								<li>
+									Developed by Seyhyun Yang, Amber Renton, Jason Debel, Loren Heubert-Aubry, and Dillan Huang
+								</li>
+								<li>
+									48 hour development cycle (January 2019)
+								</li>
+								<li>
+									5 developers
+								</li>
+								<li>
+									Made using Unity Engine
+								</li>
+							</ul>
+							<h2>CONTRIBUTIONS</h2>
+							<ul>
+								<li>
+									Programmer
+								</li>
+								<li>
+									Designer
+								</li>
+						</div>
+					</section>
+					<section id="main" class="wrapper style2 fullscreen fade-up"">
+						<div class="inner">
+							<h1 class="major">POST-MORTEM</h1>
+							<img src="images/PlaygroundOdyssey/playground_odyssey_1.gif" class="image right" style="max-width:60%; 
+							max-height:100%; margin: 0em 1em 0em 1em;">
+							<h2>WHAT WENT RIGHT</h2>
+							<ul>
+								<li>
+									Implementing each of the individual mechanics in seperate scenes allowed for concurrent and efficient work without causing merge conflicts
+								</li>
+								<li>
+									Animation using the Unity Animator allowed for animations to be quickly implemented after the sprites were created
+								</li>
+							</ul>
+							<br><br><br><br><br>
+							<img src="images/PlaygroundOdyssey/playground_odyssey_2.gif" class="image left" style="max-width:60%; 
+							max-height:100%; margin: 0em 3em 1em 1em;">
+							<h2>WHAT COULD BE IMPROVED</h2>
+							<ul>
+								<li>
+									Layers were not properly ordered in the creation of the map, resulting in many elements clipping behind and in front of each other
+								</li>
+								<li>
+									Lack of experience in using the Unity Animator resulted in many small bugs and glitches in the animations that took a long time to fix
+								</li>
+							</ul>
+							<br><br><br>
+							<img src="images/PlaygroundOdyssey/playground_odyssey_3.gif" class="image right" style="max-width:60%; 
+							max-height:100%; margin: 0em 1em 0em 1em;">
+							<h2>LESSONS LEARNED</h2>
+							<ul>
+								<li>
+									When using Layers and Tags in a team, the collisions, render order of Layers, and usage of tags need to be decided on before each programmer individually uses them
+								</li>
+								<li>
+									For small scale projects such as this, vector art and keyframe based animation is far easier and quicker than individually drawing each from and using the Unity Animator to animate them
+								</li>
+						</div>
+					</section>
+					<section id="main" class="wrapper style3 fullscreen fade-up"">
+						<div class="inner">
+							<h1 class="major">CONTRIBUTIONS</h1>
+							<p>
+								My major contribution to this project was the implementation and design of each of the playground mechanics. The monkey bars, ladder, and climable walls were all 
+								fairly easy to implement, with the player's x or y-position being locked while they are being used. The swings were a bit more difficult to implement. 
+								Many different methods were tried, such as manually calculating the relative transform of the player in a unit circle around the swing, or temporarily 
+								setting the player as a child of the swing. None of these worked particularly well, and what I ended up doing was using the FixedJoint2D component. This 
+								allowed me to fix the player to the end of the swing, and by setting the break force to infinity, the player could swing back and forth without breaking 
+								free. The component could simply be set to inactive when the player gets off of the swing. There were several other mechanics that I designed, such as a 
+								jungle gym, or a flight mechanic, there was not enough time to implement them.
+							</p>
+						</div>
+					</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Seyhyun Yang. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
