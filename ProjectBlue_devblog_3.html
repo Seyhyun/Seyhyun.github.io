@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Project Blue Dev Blog 3</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" href="images/Self/game_icon.png">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">SEYHYUN YANG</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">HOME</a></li>
+						<li><a href="Projects.html">PROJECTS</a></li>
+						<li><a href="DevBlog.html" class="active">DEV BLOGS</a></li>
+						<li><a href="AboutMe.html">ABOUT ME</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+				<section id="two" class="wrapper style3 fade-up">
+					<div class="inner">
+						<h1>Project Blue Dev Blog 3</h1>
+						<h2>March 1st, 2020 ~ March 23rd, 2020</h2>
+						<p>
+							Fixing bugs in custom editor tools and prototyping boss attacks
+						</p>
+					</div>
+					<div class="inner">
+						<img src="images/ProjectBlue/devblog3_1.gif" class="image right" style="max-width:60%; 
+							max-height:100%; margin: 0em 3em 1em 1em;">
+						<h3>Boss Attack Editor and Boss Projectile Editor Bug Fixing</h3>
+						<p>
+							After extensive testing, a bug was discovered in the Boss Attack Editor that I had created in the previous sprint. If a 
+							prefab in the Projectile list was deleted, the CustomEditor would crash, and it would be no longer possible to add or 
+							remove projectile prefabs. After several attempts, this was fixed by checking if each prefab was null, and removing it from 
+							the list if it was.
+							<br><br>
+							When I began prototyping the crystal slam attack, I quickly found a bug in the Boss Projectile Editor that another Boss 
+							Pod member had made in the previous sprint. The custom editor worked in a similar method to the one that I had designed, 
+							having an expanding list of 'stages' that the projectile could go through. I found that if I increased the number of stages 
+							beyond 1, if I would click out of the editor or go to a different window, the stages would disappear, leaving only the 
+							first one. The data of the first stage would be preserved, but the number of stages would be reset, and the other stages 
+							in the editor would disapper. After some research, I discovered that this was happening because the ListSize variable was 
+							being declared inside the CustomEditor script, and initialized to 1. If the variable was declared in the MonoBehavior part 
+							of the script, the intial value itself would be overriden by changes made in the inspector automatically. However, since 
+							it was in the CustomEditor, every time the Editor was reloaded, it would initialize to 1, effectively removing access to 
+							the rest of the stages. The data of the stages was still in the list, but the ListSize, which was used to count the number 
+							of stages to display, was reset to 1, so they were not shown. This was fixed by adding a line of code in OnAwake() to set 
+							ListSize to the actual size of the stage list itself.
+
+							<br><br>
+						</p>
+
+					</div>
+					<div class="inner">
+						<img src="images/ProjectBlue/devblog3_2.gif" class="image left" style="max-width:60%; 
+							max-height:100%; margin: 0em 3em 1em 1em;">
+						<h3>Crystal Slam Attack Prototyping</h3>
+						<p>
+							The Crystal Slam attack is a attack for the final boss of the game, in which the boss rises high into the air, and slams 
+							down, sending spikes of crystal out of the floor, forcing the player to jump of teleport above the ground in order to avoid 
+							being damaged. It was designed by a designer in the Boss Pod. The attack will grow more complex with each stage, with the 
+							boss eventually firing projectiles while in the air, and those projectiles eventually becoming homing projectiles. For this 
+							sprint, I prototyped the most basic version, with only the spikes on the floor, mostly to check if the BossAttackScriptableObject 
+							and the TemplateBossProjectile would work together properly. I added 20 projectiles just under the ground, and gave each two 
+							stages. During the first stage, which lasts 0.2 seconds, the spikes(projectiles) would rapidly rise up from underneath the 
+							ground, covering the ground. In the second stage, which lasts 5 seconds, they would simply stay still, and then delete 
+							themselves. The net effect would be the spikes sprouting out the ground, staying for a few seconds and disappearing. While 
+							there were some complications involving bugs in the editors themselves, the prototyping of the attack itself went smoothly.
+
+							<br><br>
+						</p>
+						
+					</div>					
+					<div class="inner">
+						<h3>Limitations and Future Tasks</h3>
+						<p>
+							Unfortunately, due to the state machine still having several bugs and not working properly, I was unable to add the 
+							BossAttackScriptableObject to the state machine and implement the logic for the boss to attack. This should be taken care of 
+							in the next sprint. Another limitation is that the BossProjectiles must all be instantiated at the same time. A feature that 
+							is currently being debated upon is adding the ability to deactivate or reactivate the MeshRenderer for each stage of the 
+							projectile. This would be and easy solution that does not require adding another (time) variable to the already complex 
+							BossAttackScriptableObject.
+						</p>
+					</div>
+					<div class="inner">
+						<h3>WolverineSoft Labs</h3>
+						<p>
+							Unfortunately due to COVID-19, the WolverineSoft Labs were not able to make much progress, as many students were self-isolating 
+							and moving back their hometowns or home countries.
+						</p>
+					</div>
+				</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Seyhyun Yang. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
