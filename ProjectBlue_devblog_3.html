@@ -48,7 +48,7 @@
 							After extensive testing, a bug was discovered in the Boss Attack Editor that I had created in the previous sprint. If a 
 							prefab in the Projectile list was deleted, the CustomEditor would crash, and it would be no longer possible to add or 
 							remove projectile prefabs. After several attempts, this was fixed by checking if each prefab was null, and removing it from 
-							the list if it was.
+							the list if it was. This took around 3 hours.
 							<br><br>
 							When I began prototyping the crystal slam attack, I quickly found a bug in the Boss Projectile Editor that another Boss 
 							Pod member had made in the previous sprint. The custom editor worked in a similar method to the one that I had designed, 
@@ -61,7 +61,7 @@
 							it was in the CustomEditor, every time the Editor was reloaded, it would initialize to 1, effectively removing access to 
 							the rest of the stages. The data of the stages was still in the list, but the ListSize, which was used to count the number 
 							of stages to display, was reset to 1, so they were not shown. This was fixed by adding a line of code in OnAwake() to set 
-							ListSize to the actual size of the stage list itself.
+							ListSize to the actual size of the stage list itself. This took around 5 hours.
 
 							<br><br>
 						</p>
@@ -80,9 +80,8 @@
 							and the TemplateBossProjectile would work together properly. I added 20 projectiles just under the ground, and gave each two 
 							stages. During the first stage, which lasts 0.2 seconds, the spikes(projectiles) would rapidly rise up from underneath the 
 							ground, covering the ground. In the second stage, which lasts 5 seconds, they would simply stay still, and then delete 
-							themselves. The net effect would be the spikes sprouting out the ground, staying for a few seconds and disappearing. While 
-							there were some complications involving bugs in the editors themselves, the prototyping of the attack itself went smoothly.
-
+							themselves. The net effect would be the spikes sprouting out the ground, staying for a few seconds and disappearing. The 
+							prototyping of the attack took around 4 hours to complete.
 							<br><br>
 						</p>
 						
