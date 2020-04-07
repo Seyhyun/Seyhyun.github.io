@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Project Blue Dev Blog 4</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" href="images/Self/game_icon.png">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">SEYHYUN YANG</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">HOME</a></li>
+						<li><a href="Projects.html">PROJECTS</a></li>
+						<li><a href="DevBlog.html" class="active">DEV BLOGS</a></li>
+						<li><a href="AboutMe.html">ABOUT ME</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+				<section id="two" class="wrapper style3 fade-up">
+					<div class="inner">
+						<h1>Project Blue Dev Blog 4</h1>
+						<h2>March 24th, 2020 ~ April 6rd, 2020</h2>
+						<p>
+							Prototyping more boss attacks
+						</p>
+					</div>
+					<div class="inner">
+						<img src="images/ProjectBlue/devblog3_1.gif" class="image right" style="max-width:60%; 
+							max-height:100%; margin: 0em 3em 1em 1em;">
+						<h3>Wall Attack Prototyping</h3>
+						<p>
+							The Wall attack is an attack for the final boss of the game, in which the boss swings its sword, and sends walls of crystals/
+							swords flying from the right side of the screen, with a small hole that the player can jump or teleport through in order to 
+							avoid damage. It was designed by a designer in the Boss Pod. After some experiementation, I decided that the easiest way 
+							to create the walls was to have each wall be composed of two rectangular projectiles on the same x-coordinates, and slightly 
+							apart so there would be an empty space between them. Each set of walls would have two stages, for the the first stage, they 
+							would stay still beyond the screen for set amount of time, differing for each set so they would consecutively start moving, 
+							and in the second stage, they would move left for a set amount of time, and despawn. Like the previous attack, it took quite 
+							a while to get the timing for each of the projectiles correct. In total, this process took about 6 hours.
+
+							<br><br>
+						</p>
+
+					</div>
+					<div class="inner">
+						<img src="images/ProjectBlue/devblog4_1.gif" class="image left" style="max-width:60%; 
+							max-height:100%; margin: 0em 3em 1em 1em;">
+						<h3>Crystal Slam Attack Prototyping (Continued)</h3>
+						<p>
+							After prototyping the Crystal Slam Attack in the previous sprint, I was tasked with refining it after the designers made 
+							several key changes to the process of the attack. Instead of the crystal spikes all coming out of the floor at one time, 
+							they would start coming out of the ground consecutively starting from one side. This was done by having a seperate projectile 
+							prefab for each spike. Each one would have 2 stages, where in the first stage, it would stay under the floor for a set 
+							amount of time, which would be different for each prefab, and in the second stage, it would move upward out of the ground, 
+							for a set amount of time, which would be the same for each prefab, and after these two stages ended, it would despawn. Like 
+							the prototyping process for the previous version of the attack, it took quite a while to get the timing for each the 
+							projectiles correct. There were some slight complications where I found a bug that caused the later stages of each projectile 
+							from activating, which took a while to resolve, and I ended up contacting the developer of the projectile script, who fixed 
+							the bug after some effort. In total, this process took about 6 hours.
+							<br><br>
+						</p>
+						<h3>Wall Slam Attack Prototyping</h3>
+						<p>
+							The Wall Slam attack is an attack for the final boss of the game that combines the slam and wall attacks that were developed 
+							previously. The boss first jumps up and slams into the ground and causes the spikes to come up from the ground, and then walls 
+							of crystals start coming from the right of the screen. So the player will have to jump and teleport through the moving walls 
+							while being unable to touch the ground because of the spikes. This attack was prototyped by using prefabs that were developed 
+							for the previous two attacks, and modifiying them so they would work together. Like the other two attacks, it took quite a 
+							while to get the timing for each projectile right, and since this attack is multifaceted, unlike the previous attacks, I took 
+							a significant amount of time to playtest it to tweak the timing and speed to make sure the player would be able to get through 
+							it. This process took around 6 hours.
+						</p>
+						
+					</div>					
+					<div class="inner">
+						<h3>Limitations and Future Tasks</h3>
+						<p>
+							Unfortunately, because the animations and the assets for the boss attacks had not been implemented yet, the attacks still look 
+							very unfinished when playing. For the slam attacks, the boss does not move at all and stands still because the animation for the 
+							boss slaming into the floor does not exist. Also, since there are no art assets for the spikes and walls, they are currently 
+							using crystal assets which are stretched to match the dimensions needed. Thankfully, the animations and assets should be ready 
+							by the end of the next sprint.
+						</p>
+					</div>
+					<div class="inner">
+						<h3>WolverineSoft Labs</h3>
+						<p>
+							For the WolverineSoft Labs, most teams have finished implementing all of their main mechanics, and are ready to begin the beta 
+							phase, where no new assets or mechanics will be added. Several students reached out to me for instruction on Git usage, and I 
+							livestreamed a short tutorial over Discord. Labs meetings are also now held over Discord, using the livestream function to show 
+							any presentation slides.
+						</p>
+					</div>
+				</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Seyhyun Yang. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
