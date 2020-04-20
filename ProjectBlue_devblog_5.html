@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Project Blue Dev Blog 5</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" href="images/Self/game_icon.png">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">SEYHYUN YANG</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">HOME</a></li>
+						<li><a href="Projects.html">PROJECTS</a></li>
+						<li><a href="DevBlog.html" class="active">DEV BLOGS</a></li>
+						<li><a href="AboutMe.html">ABOUT ME</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+				<section id="two" class="wrapper style3 fade-up">
+					<div class="inner">
+						<h1>Project Blue Dev Blog 5</h1>
+						<h2>April 7th, 2020 ~ April 20th, 2020</h2>
+						<p>
+							Bug Fixing and Boss Trigger Implementation
+						</p>
+					</div>
+					<div class="inner">
+						<img src="images/ProjectBlue/devblog4_1.gif" class="image right" style="max-width:60%; 
+							max-height:100%; margin: 0em 3em 1em 1em;">
+						<h3>Wall Attack Prototyping</h3>
+						<p>
+							The Wall attack is an attack for the final boss of the game, in which the boss swings its sword, and sends walls of crystals/
+							swords flying from the right side of the screen, with a small hole that the player can jump or teleport through in order to 
+							avoid damage. It was designed by a designer in the Boss Pod. After some experiementation, I decided that the easiest way 
+							to create the walls was to have each wall be composed of two rectangular projectiles on the same x-coordinates, and slightly 
+							apart so there would be an empty space between them. Each set of walls would have two stages, for the the first stage, they 
+							would stay still beyond the screen for set amount of time, differing for each set so they would consecutively start moving, 
+							and in the second stage, they would move left for a set amount of time, and despawn. Like the previous attack, it took quite 
+							a while to get the timing for each of the projectiles correct. In total, this process took about 6 hours.
+
+							<br><br>
+						</p>
+
+					</div>
+					<div class="inner">
+						<img src="images/ProjectBlue/devblog4_2.gif" class="image left" style="max-width:60%; 
+							max-height:100%; margin: 0em 3em 1em 1em;">
+						<h3>Boss Attack Scriptable Object Debugging</h3>
+						<p>
+							During the final stages of the final boss implementation, a severe bug was discovered that completely halted the progress of 
+							development. When the custom editor was used to design and implement an attack, it would sometimes not save to disk, completely 
+							resetting the data of the asset file, undoing all of the work done to implement it. It took a <i>significant</i> amount of 
+							research and testing to figure out what had been causing the bug, and even more time to fix it. The problem originated with the 
+							method in which Unity handles saving changes made to files with the .asset format. Whenever you press ctrl+s in Unity to save 
+							any changes you have made, Unity goes through a list of files that it has marked as 'dirty', and saves only those files. Normally 
+							any changes made in the scene are automatically marked as dirty. However this only applies to changes <i>in the scene</i>. While 
+							the custom editor I developed uses Gizmos in the Scene to modify the data of the asset file of that specific scriptableobject, 
+							The asset file itself is not in the scene, so it is not automatically marked as dirty. Unity only checks if asset files outside 
+							of the scene have been changed every couple of minutes, or other specifc circumstances such as exiting the scene itself. After 
+							much research on Unity's handling of asset files and scriptable objects, I implemented a fix that used the EditorGUI.StartChangeCheck 
+							function and EditorGUI.EndChangeCheck functions to manually check for any changed data in the asset file itself for every render of the 
+							custom editor, and if any changes were found, the asset file would be set dirty using the EditorUtility.SetDirty function to 
+							manually mark the file as dirty so it would be saved whenever ctrl+s is pressed or Unity auto-saves changes. This process took 
+							around 12 hours in total.
+							<br><br>
+						</p>
+						<h3>Playtesting</h3>
+						<p>
+							As the game was entering the last stages of development, extensive playtesting was required to find and fix any bugs that had gone 
+							unnoticed or had been caused by integrating systems together. I participated in multiple playtests, and several that were proctored 
+							and recorded by designers. I was part of the playtest that was used to decide the keyboard controls for the windmills. I played 
+							through multiple builds, each using a different button to cling onto the windmills, and I gave feedback on how each option felt, and 
+							which was my most preferred option. I playtested for approximately a total of 5 hours.
+						</p>
+						<h3>Boss Trigger Implementaion</h3>
+						<p>
+							As the sprint was coming to an end, another bug with the boss was discovered. The boss was activating itself when the scene was 
+							loaded, and prematurely going through its states and attacks. I fixed this bug by implementing a trigger that activated the boss 
+							at the appropriate moment. This was done by using the OnTriggerEnter2D function. Whenever the a GameObject with the tag 'Player' 
+							collided with the transparent Trigger GameObject, it would activate the Boss, and the trigger was placed at the location where 
+							the player begins to fall into the boss arena. This process took around 1 hour.
+						</p>
+					</div>					
+					<div class="inner">
+						<h3>Limitations and Future Tasks</h3>
+						<p>
+							One feature that could not be added to the BossAttackScriptableObject due to time constraints was the abilities to invoke events 
+							during the attack. This would allow the Attack function to invoke any event, including Wwise audio events, allowing the 
+							scriptable object to be used for many other things aside from boss attacks. I will be working to implement these features to 
+							the BossAttackScriptableObject, alongside expanding it to allow for use in 3D projects as part of the preproduction for 
+							WolverineSoft Studio's Summer Project.
+						</p>
+					</div>
+					<div class="inner">
+						<h3>WolverineSoft Labs</h3>
+						<p>
+							For the WolverineSoft Labs, the remaining team, untitled-bug-game finished their game, delivering a gold build, complete with a 
+							main menu and game loop. The final build will be uploaded to WolverineSoft Studio's itch.io page, alongside the main studio game.
+					</div>
+				</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Seyhyun Yang. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
