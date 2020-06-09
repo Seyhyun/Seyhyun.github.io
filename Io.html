@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Io</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" href="images/Self/game_icon.png">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">SEYHYUN YANG</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">HOME</a></li>
+						<li><a href="Projects.html" class="active">PROJECTS</a></li>
+						<li><a href="DevBlog.html">DEV BLOGS</a></li>
+						<li><a href="AboutMe.html" >ABOUT ME</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper style1 fullscreen fade-up"">
+						<div class="inner">
+							<h1 class="major">DREAMWILLOW</h1>
+							<span class="image fit"><a href="https://wolverinesoft-studio.itch.io/io" class="image">
+								<img src="images/Io/Io_title.png" alt="" /></span></a>
+							<h2>ABOUT</h2>
+							<p>A long term project completed over the course of a semester by around 90 University of Michigan students, Io is a
+								2d action platformer with tense combat, high mobility, and difficult platforming and a final 
+								boss, all utillizing the unique teloportation mechanic.</p>
+							<h2>DEVELOPMENT INFO</h2>
+							<ul>
+								<li>
+									Developed by WolverineSoft Studio
+								</li>
+								<li>
+									3 month development cycle (02/04/2020 - 5/04/2020)
+								</li>
+								<li>
+									90 developers
+								</li>
+								<li>
+									Made using Unity Engine
+								</li>
+							</ul>
+							<h2>CONTRIBUTIONS</h2>
+							<ul>
+								<li>
+									Programmer
+								</li>
+						</div>
+					</section>
+					<section id="main" class="wrapper style2 fullscreen fade-up"">
+						<div class="inner">
+							<h1 class="major">POST-MORTEM</h1>
+							<img src="images/Io/Io_1.gif" class="image right" style="max-width:60%; 
+							max-height:100%; margin: 0em 1em 0em 1em;">
+							<h2>WHAT WENT RIGHT</h2>
+							<ul>
+								<li>
+									Developer tools creating using ScriptableObjects and Gizmos allowed for designers to design and implement attacks without having to directly
+									code or work extensively alongside programmers
+								</li>
+								<li>
+									Division of boss implementation into State Machine, Attack, and Projectiles allowed for a modular system that allowed fast prototpying and 
+									creation, and the system was stable enough that it is being considered for future WolverineSoft Studio Projects
+								</li>
+								<li>
+									Usage of Confluence Collaboration Software allowed for designers, artists, and audio engineers to easily look up documentation for assets 
+									created by programmers, and prototype using them without the direction of a programmer
+								</li>
+							</ul>
+							<br><br><br>
+							<img src="images/Io/Io_2.gif" class="image left" style="max-width:60%; 
+							max-height:100%; margin: 0em 3em 1em 1em;">
+							<h2>WHAT COULD BE IMPROVED</h2>
+							<ul>
+								<li>
+									Because progress was far slower than initially anticipated, severe downscoping was required, with only 2 levels left of 
+									the original 6, and 1 boss instead of 2
+								</li>
+								<li>
+									Sprint deadlines were often not meant, with tasks being worked on days after they where due, and many tasks were pushed to 
+									the backlog and future sprints, causing work to pile up
+								</li>
+								<li>
+									Playtesting, while extensive, was not done enough, resulting in game-breaking bugs in implementation being discovered very 
+									late into prodcution, forcing programmers to work overtime to fix them
+								</li>
+							</ul>
+							<br><br><br>
+							<img src="images/Io/Io_3.png" class="image right" style="max-width:60%; 
+							max-height:100%; margin: 0em 1em 0em 1em;">
+							<h2>LESSONS LEARNED</h2>
+							<ul>
+								<li>
+									Task assignment must be done with far more care, taking into consideration any unexpected circumstances that may cause them to take
+									 far more time, and sprint deadlines must be enforced more strictly to avoid work piling up
+								</li>
+								<li>
+									Extensive playtesting must be done for not only features and design, but also for any custom tools that were created for the projcet
+								</li>
+								<li>
+									While downscoping happens during the development process of almost every game, it should be taken in consideration during preproduction 
+									to prevent very large segments being removed after work has already been done
+								</li>
+						</div>
+					</section>
+					<section id="main" class="wrapper style3 fullscreen fade-up"">
+						<div class="inner">
+							<h1 class="major">CONTRIBUTIONS</h1>
+							<p>
+								My major contribution to this project was the implementation of the shop. Due to not enough time spent in 
+								pre-preproduction, the shop design was revamped multiple times throughout development, sometimes even during 
+								sprints. It was my job to initially implement the shop, take care of these problems and reimplement features 
+								when neccessary. Initially, the player was supposed to be able to buy upgrades to their main attack in addition
+								to health and extra necromancy slots. The proposal was that players would be able to pick up an attack upgrade, 
+								test it out, but if they try to leave the shop without paying, the door would close and stop them from leaving.
+								This was implemented within a few weeks, and the player was able to test out the new attacks. However, to the end
+								of that sprint, it was decided that the player would not be able to upgrade their attack. So, that option was 
+								removed, but right after the sprint, it was again decided that you would not be able to pickup items, and you 
+								would simply buy items on the spot without having to pay by going up to the shopkeeper. At this point, I should
+								have simply rewritten the entire shop system from scratch, as many of the features had been removed, and the 
+								complicated eventsystem that was in place was entirely uneccessary. However, I decided to just use what I had 
+								already created. This made it difficult to further update the shop whenever anything was added, because I had 
+								to go through the system that I had implemented, instead of having a simple trigger based system. However, I did 
+								end up finishing the shop, and it currently perfectly functional within the game.<br>
+								During production, I learned a very important lesson, and it is that not all my work will always make into the 
+								game, so I should cut my losses as soon as possible to avoid uneccessary work.
+							</p>
+						</div>
+					</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Seyhyun Yang. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
