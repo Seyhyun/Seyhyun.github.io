@@ -123,24 +123,44 @@
 						<div class="inner">
 							<h1 class="major">CONTRIBUTIONS</h1>
 							<p>
-								My major contribution to this project was the implementation of the shop. Due to not enough time spent in 
-								pre-preproduction, the shop design was revamped multiple times throughout development, sometimes even during 
-								sprints. It was my job to initially implement the shop, take care of these problems and reimplement features 
-								when neccessary. Initially, the player was supposed to be able to buy upgrades to their main attack in addition
-								to health and extra necromancy slots. The proposal was that players would be able to pick up an attack upgrade, 
-								test it out, but if they try to leave the shop without paying, the door would close and stop them from leaving.
-								This was implemented within a few weeks, and the player was able to test out the new attacks. However, to the end
-								of that sprint, it was decided that the player would not be able to upgrade their attack. So, that option was 
-								removed, but right after the sprint, it was again decided that you would not be able to pickup items, and you 
-								would simply buy items on the spot without having to pay by going up to the shopkeeper. At this point, I should
-								have simply rewritten the entire shop system from scratch, as many of the features had been removed, and the 
-								complicated eventsystem that was in place was entirely uneccessary. However, I decided to just use what I had 
-								already created. This made it difficult to further update the shop whenever anything was added, because I had 
-								to go through the system that I had implemented, instead of having a simple trigger based system. However, I did 
-								end up finishing the shop, and it currently perfectly functional within the game.<br>
-								During production, I learned a very important lesson, and it is that not all my work will always make into the 
-								game, so I should cut my losses as soon as possible to avoid uneccessary work.
+								My major contribution to this project was the implementaiton of the ScriptableObject that stored the data of an 
+								indiviual type of boss attack, and the tool that allowed developers to easily create their own attack without 
+								touching code, through the Unity Inspector and Scene Editor. The boss system was initially divided into 3 parts, 
+								the State Machine, which controlled the behavior of the boss, the BossAttackScriptableObject, which stored the 
+								properties of the attack, such as the animations, and coordinates for the projectiles, and the Projectile prefab, 
+								which was the individual projectiles that would be instantiated by the BossAttackScriptableObject, which was in 
+								turn called on by the State Machine. The ScriptableObject stores a list of possible projectile prefabs, and 
+								coordinates and rotation, and prefab type for each projectile that is instantiated, and the animation that the 
+								boss will go through. The ScriptableObject itself has an Attack() function that instantiates all the selected 
+								prefabs, at the stored coordinates and rotations. I utilized a CustomEditor script to create the Editor interface 
+								from scratch. There is a empty ObjectField where a designer can drag in prefabs that will used in the attack, which 
+								are added to an internal List. A dropdown field of all the stored prefabs is underneath it, allowing each prefab 
+								to be removed from the list. Underneath that, is IntField to decide the number of projectiles that will be 
+								instantiated, and fields for the type of prefab, coordinates, and rotation of each projectile are automatically 
+								added or removed underneath this as the number of projectiles are changed. Up until this point was fairly simple, 
+								albeit time consuming to implement. The difficult part was the creation of a tool that allows the designers to 
+								easily create their own attacks. The method I used was having a Gizmo be rendered at the location of each projectile, 
+								and handles on the Gizmo that allow the coordinates and rotation to be changed by clicking and dragging on them, without 
+								having to input exact numbers in the Editor. However, I encountered many difficulties. <br> <br>
+								Unlike almost any kind of Object class in Unity, Gizmos do not have a Transform component, and their global location and 
+								rotation are stored in a Matrix4x4 format using Quaternions. Converting to and fro from Matrix4x4 to Vector3 is 
+								extremely tedious, but it is possible by creating a new one of either, and using Unity's conversion functions. 
+								The big problem was making the location and rotation of the Gizmo correspond to the transform data stored in the 
+								ScriptableObject when it is stored. I ended up using a very obtuse system that involves multiple conversions between 
+								data types, and how I did this and why I did so can be found in the Dev Blog for Io, linked below.
+
+								<br><br>
+
+								Another big problem that occured later was a bug that caused the data stored in the ScriptableObject to randomly be reset. 
+								After extensive research, I discovered that this was because, unlike any changes made to an Object that is in the currently 
+								open scene, a ScriptableObject is not automatically checked for changes, and is only checked in specific circumstances, 
+								such as the object itself being exited, or a save not having occured for a long time. So, any changes made in the Editor 
+								would not be saved to disk on ctrl+s, resulting in them reset whenever Unity was closed and opened again. This was fixed 
+								by manually marking any changes as dirty in the CustomEditor script.
 							</p>
+							<ul class="actions">
+								<li><a href="ProjectBlue_devblog.html" class="button">Io Dev Blog</a></li>
+							</ul>
 						</div>
 					</section>
 			</div>
