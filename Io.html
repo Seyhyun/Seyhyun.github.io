@@ -141,7 +141,7 @@
 								albeit time consuming to implement. The difficult part was the creation of a tool that allows the designers to 
 								easily create their own attacks. The method I used was having a Gizmo be rendered at the location of each projectile, 
 								and handles on the Gizmo that allow the coordinates and rotation to be changed by clicking and dragging on them, without 
-								having to input exact numbers in the Editor. However, I encountered many difficulties. <br> <br>
+								having to input exact numbers in the Editor. However, I encountered many difficulties. <br> 
 								Unlike almost any kind of Object class in Unity, Gizmos do not have a Transform component, and their global location and 
 								rotation are stored in a Matrix4x4 format using Quaternions. Converting to and fro from Matrix4x4 to Vector3 is 
 								extremely tedious, but it is possible by creating a new one of either, and using Unity's conversion functions. 
@@ -149,7 +149,7 @@
 								ScriptableObject when it is stored. I ended up using a very obtuse system that involves multiple conversions between 
 								data types, and how I did this and why I did so can be found in the Dev Blog for Io, linked below.
 
-								<br><br>
+								<br>
 
 								Another big problem that occured later was a bug that caused the data stored in the ScriptableObject to randomly be reset. 
 								After extensive research, I discovered that this was because, unlike any changes made to an Object that is in the currently 
