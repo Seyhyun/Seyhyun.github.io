@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Project Rogue Dev Blog 2</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" href="images/Self/game_icon.png">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">SEYHYUN YANG</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">HOME</a></li>
+						<li><a href="Projects.html">PROJECTS</a></li>
+						<li><a href="DevBlog.html" class="active">DEV BLOGS</a></li>
+						<li><a href="AboutMe.html">ABOUT ME</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+				<section id="two" class="wrapper style3 fade-up">
+					<div class="inner">
+						<h1>Project Rogue Dev Blog 3</h1>
+						<h2></h2>
+						<p>
+							Minor Bug Fixes, Game Over, and Loading Screen
+						</p>
+					</div>
+					<div class="inner">
+						<h3>Minor Bug Fixes</h3>
+						<p>
+							To begin, I was notified of a small bug in my code for the function that cleaned up the scene. When I go through 
+							the scene to destroy any weapons, I ended up destroying the player's weapon as well. This had not been obvious, 
+							as when I had previously tested, I had only checked to see if the next level loaded. I ended up checking the 
+							the parents of the weapon to see if it belonged to the player, and deleting it if not so. This took around 
+							2 hours.
+						</p>
+						<br><br><br>
+						<img src="images/ProjectRogue/devblog3_1.gif" class="image left" style="max-width:60%; 
+						max-height:100%; margin: 0em 3em 1em 1em;">
+						<h3>Game Over Screen</h3>
+						<p>
+							The next task I was assigned was creating a game over screen. The screen would display what enemy the player had 
+							died to, and when clicked, would send the player back to the main menu. This was fairly difficult as I had to find 
+							a way of getting the name of the enemy that had killed the player, and as the scripts are currently written, everything 
+							is very compartmentalized, and I had to look for a workaround. I first had to familizarize myself with how the enemies, 
+							projectiles, and player health management worked, as I needed to know how each interacted so I would be able to pull 
+							the name of the enemy all the way through to the GameManger. This took around 5 hours.
+							After many, many attempts, what I ended up doing was 
+							adding an event listener to the player section of the EntityHealth script, and checking for when the player died. 
+							I also added a variable that held the name of the last entity that hit the player, and a function that updated that 
+							whenever the player was hit. I then added a function to the GameManager that would get the name of the killer from 
+							the player, and pass it to the canvas that would display the game over screen, alongside other things like unlocking 
+							the mouse and stopping the time. The canvas would then set itself to active, and the text on the screen would be 
+							changed to say the name of the entity that killed the player. Unfortunately, due to the fact that the enemies do not 
+							actually store their name anywhere, I was forced to just go with the name of the prefabs themselves, so if a prefab 
+							is not named correctly, or is a temp prefab, it will just display the name of the prefab, so the enemies will have 
+							to be named their actual names. This took around 12 hours.
+						</p>
+						<br><br><br>
+						<h3>Loading Screen</h3>
+						<p>
+							To begin, I moved the loading text to the bottom left corner as requested. I then tried to find a way to get a 
+							random image to load into the panel. After some research and tested, I decided manually adding all the images to 
+							an array in the prefab itself would be too difficult, and I instead opted to use Resources.LoadAll. After some 
+							tweaking, I was able to get it to work, and I also fixed the aspect ratio so the images would not stretch. I also 
+							added in a white background to cover the rest of the screen if the aspect ratio was different from the game. This 
+							took around 5 hours.
+						</p>
+					</div>
+					<div class="inner">
+						<h3>Limitations and Future Tasks</h3>
+						<p>
+							I spent a significant amount of time trying to find a way to find all the enemy drops without manually searching 
+							for them. This was because using FindGameObjectsWithTag was very inefficient and is even mentioned in the comments 
+							of the code that destroys enemy bodies. After reviewing the code, I should have realized that it would not be feasible 
+							to do so without significantly altering the enemy code, and the inefficiency would be ok since the function itself 
+							would only be called at the end of a level, but I spent far too much time trying to find a workaround, and ended up 
+							giving up in the end. I learned that I should quickly try to figure out if a specific aspect of a task is worth 
+							spending time on before using so much time on something that only slightly affects the game.
+						</p>
+					</div>
+				</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Seyhyun Yang. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
