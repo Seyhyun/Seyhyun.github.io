@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Project Rogue Dev Blog 4</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" href="images/Self/game_icon.png">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">SEYHYUN YANG</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">HOME</a></li>
+						<li><a href="Projects.html">PROJECTS</a></li>
+						<li><a href="DevBlog.html" class="active">DEV BLOGS</a></li>
+						<li><a href="AboutMe.html">ABOUT ME</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+				<section id="two" class="wrapper style3 fade-up">
+					<div class="inner">
+						<h1>Project Rogue Dev Blog 4</h1>
+						<h2></h2>
+						<p>
+							Rework of Loading Screen, Debug Toggle, Git Issues
+						</p>
+					</div>
+					<div class="inner">
+						<h3>Rework of Loading Screen</h3>
+						<p>
+							To begin, it was decided that using a Resources folder would cause building the game to take far too long, so I 
+							had to rework the randomized artwork of the loading screen to use a different method. I still thought that a 
+							public list would be difficult for artists to add any artwork, so after a significant amount of research, and 
+							discussion with other programmers, I decided to use a new experimental feature of unity called sprite libraries. 
+							It essentially is a type of asset file that can have multiple sprites added into different categories, and can be 
+							referenced by other experimental components. At first, I had intended on just using the sprite library asset, and 
+							getting the sprites inside it with my own code, but I quickly learned that this would be difficult as most of the 
+							sprite library's functions were either internal or private. So I ended up adding a SpriteResolver, another 
+							experimental component which uses a sprite library to set the sprite of a sprite renderer component on the same 
+							gameobject. One issue I ran into that took me far longer to resolve than it should have is that I needed to add 
+							'using UnityEngine.Experimental.U2D.Animation' to actually reference the SpriteResolver and SpriteLibrary components.
+							I ended up spending more time than I should have trying to figure what had been going wrong only to figure this out 
+							later.
+							During this process, I ran into a issue with git, which caused over a hundred files to be changed/corrupted, and 
+							after several hours of trying to troubleshoot by resetting the branch, reverting commits etc, I ended up copying what 
+							work I had into a seperate folder, recloning the repo, making a new local branch, and pasting my changes back in. This 
+							took around 4 hours
+							In the end, I managed to get everything work, and for artists to add any new concept art in, all they had to do 
+							was add it to the sprite library asset called Concept Art, which shows every image inside in the editor, making it 
+							far eaiser to use than a public list. The loading screen now shows a random piece of concept art. Excluding the git 
+							issues, this took around 14 hours.
+						</p>
+						<br><br><br>
+						<img src="images/ProjectRogue/devblog4_1.gif" class="image left" style="max-width:60%; 
+						max-height:100%; margin: 0em 3em 1em 1em;">
+						<h3>Global Debug Toggle</h3>
+						<p>
+							The next task I was assigned was creating a global debug toggle, and a corresponding in game console command using the 
+							developer console. After familiarizing myself with how the debug text was handled in the enemies, I added a global 
+							bool to the game manager that could be referenced by each enemy. Afterward, I figured out how the developer console 
+							worked, and added a command that would allow the user to toggle the bool in the game manager in-game, so the debug 
+							text could be turned on and off in-game. This took around 5 hours.
+						</p>
+						<br><br><br>
+					</div>
+					<div class="inner">
+						<h3>Limitations and Future Tasks</h3>
+						<p>
+							I spent an embarrasing amount of time trying to figure out why I was not able to get any functions or references of 
+							sprite resolver and sprite library to work, when the problem was I had not added 'using UnityEngine.Experimental.U2D.Animation' 
+							to the script file. I learned that I should more thorougly read the documentation and the code of any unfamiliar 
+							components before I use them, even more so if they are experimental. <br>
+
+							I am also still unsure what caused the issue with git to happen. I was lucky this time in that was able to preserve 
+							most of my work, but if a problem like this happens again in the future, I might not be as lucky. I am currently 
+							trying to figure out what might have went wrong, and I believe it may have to do with a pull not completing itself 
+							properly due to weak internet connection, but I am still not completely sure.
+						</p>
+					</div>
+				</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Seyhyun Yang. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
