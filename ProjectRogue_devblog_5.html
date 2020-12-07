@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Project Rogue Dev Blog 4</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" href="images/Self/game_icon.png">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">SEYHYUN YANG</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">HOME</a></li>
+						<li><a href="Projects.html">PROJECTS</a></li>
+						<li><a href="DevBlog.html" class="active">DEV BLOGS</a></li>
+						<li><a href="AboutMe.html">ABOUT ME</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+				<section id="two" class="wrapper style3 fade-up">
+					<div class="inner">
+						<h1>Project Rogue Dev Blog 4</h1>
+						<h2></h2>
+						<p>
+							Rework of Loading Screen, Debug Toggle, and Git Issues
+						</p>
+					</div>
+					<div class="inner">
+						<h3>Debugging the Debug Toggle</h3>
+						<p>
+							To begin, there were some issues with the global debug toggle that I had worked on in the previous sprint. 
+							I had initially implemented the toggle by adding code that checks the gamemanager for the current debug 
+							toggle state in each enemy's AI component, and setting the text to be enabled/unenabled. It worked fine at first, 
+							but I had not tested it thorougly enough, and it ended up causing nullreferenceexceptions on specific enemies, 
+							and not working on one specific enemy. I reimplemented the toggle through a new component that could be added to 
+							any enemy prefab, instead of adding the code to each AI component. I also went through each enemy AI component, 
+							and found each reference to the text component, and added a check to make sure they are not referenced when they 
+							have been disabled to avoid nullreferenceexceptions. It turns out that only some of the enemy AI components had 
+							checks, which was some of the worked fine. One of the enemies did not show the debug text even after all this, 
+							and after looking through its AI component again, I realized that while it had the debug text component, it was 
+							never used. I also expanded the command so it would accept true/false and on/off in addition to 0/1 as arguments.
+							This took around 6 hours in total.
+						</p>
+						<br><br><br>
+						<img src="images/ProjectRogue/devblog5_1.gif" class="image left" style="max-width:60%; 
+						max-height:100%; margin: 0em 3em 1em 1em;">
+						<h3>Playtesting</h3>
+						<p>
+
+							At this point, most of the tasks for the sprint had been completed, so I was tasked with playtesting the game. I 
+							thorougly playtested the game multiple times. Some bugs I had noticed was text being misspelled, which had also been 
+							discovered by other playtesters, and were promptly fixed. Another bug that I found was that the game was still running 
+							after the gameover screen was shown. Enemies were still moving and shooting even after the player had died behind the 
+							screen, and the sounds would play as well. This was also quickly fixed. This playtesting took around 5 hours.
+
+						</p>
+						<br><br><br>
+					</div>
+					<div class="inner">
+						<h3>Limitations and Future Tasks</h3>
+						<p>
+							When I had implemented the debug toggle, I failed to test it thorougly, and caused several bugs as a result. I also 
+							ended up adding bits of code to each enemy instead of making a reusable component, which ended up taking more time 
+							to fix in the long run. I will try my best to think through the best method to implement whatever I am working on 
+							before starting work on a feature in future projects.
+						</p>
+					</div>
+				</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Seyhyun Yang. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
